@@ -8,31 +8,31 @@ const oauthPassword = process.env.OAUTH_PASSWORD;
 const botUserName = process.env.BOT_USERNAME;
 
 const client = new tmi.Client({
-	options: { debug: true, messagesLogLevel: 'info' },
-	connection: {
-		reconnect: true,
-		secure: true,
-	},
-	identity: {
-		username: botUserName,
-		password: oauthPassword,
-	},
+    options: { debug: true, messagesLogLevel: 'info' },
+    connection: {
+        reconnect: true,
+        secure: true,
+    },
+    identity: {
+        username: botUserName,
+        password: oauthPassword,
+    },
 
-	// Channel the bot is going to be in
-	channels: ['aidanjbennett'],
+    // Channel the bot is going to be in
+    channels: ['aidanjbennett'],
 });
 
 client.connect().catch(console.error);
 
 client.on('message', (channel, tags, message, self) => {
-	if (self) return;
+    if (self) return;
 
-	// Checks if first message or not
-	if (tags['first-msg'] == true) {
-		// Shows message
-		console.log(`First message ${tags['display-name']}: ${message}`);
+    // Checks if first message or not
+    if (tags['first-msg'] == true) {
+        // Shows message
+        console.log(`First message ${tags['display-name']}: ${message}`);
 
-		/* 
+        /* 
 
 		Checks if message can be
 		pinged by the bot to
@@ -41,26 +41,26 @@ client.on('message', (channel, tags, message, self) => {
 
 			*/
 
-		domainPing(message)
-			.then((res) => {
-				if (res.success == true) {
-					console.log(`successful ping`);
+        domainPing(message)
+            .then((res) => {
+                if (res.success == true) {
+                    console.log(`successful ping`);
 
-					// Timeout person to delete message
-					client.say(
-						channel,
-						`/timeout @${tags.username} 5 Posting Links / First Message`
-					);
+                    // Timeout person to delete message
+                    client.say(
+                        channel,
+                        `/timeout @${tags.username} 5 Posting Links / First Message`
+                    );
 
-					// Ban person
-					client.say(
-						channel,
-						`/ban @${tags.username} Posting Links / First Message`
-					);
-				}
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}
+                    // Ban person
+                    client.say(
+                        channel,
+                        `/ban @${tags.username} Posting Links / First Message`
+                    );
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 });
