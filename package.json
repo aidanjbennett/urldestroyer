@@ -1,23 +1,25 @@
 {
-	"name": "url-destroyer",
-	"type": "module",
-	"version": "1.0.0",
-	"description": "",
-	"main": "./src/app.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node ./src/app.js",
-		"dev": "nodemon ./src/app.js"
-	},
-	"keywords": [],
-	"author": "Aidan Bennett",
-	"license": "ISC",
-	"dependencies": {
-		"domain-ping": "^0.2.1",
-		"dotenv": "^16.0.0",
-		"tmi.js": "^1.8.5"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.15"
-	}
+    "name": "url-destroyer",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./src/app.js",
+        "dev": "nodemon ./src/app.js",
+        "lint": "prettier ."
+    },
+    "keywords": [],
+    "author": "Aidan Bennett",
+    "license": "ISC",
+    "dependencies": {
+        "domain-ping": "^0.2.1",
+        "dotenv": "^16.0.0",
+        "tmi.js": "^1.8.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "prettier": "^2.5.1"
+    }
 }
