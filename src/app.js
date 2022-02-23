@@ -49,13 +49,7 @@ client.on('message', (channel, tags, message, self) => {
                     // Timeout person to delete message
                     client.say(
                         channel,
-                        `/timeout @${tags.username} 5 Posting Links / First Message`
-                    );
-
-                    // Ban person
-                    client.say(
-                        channel,
-                        `/ban @${tags.username} Posting Links / First Message`
+                        `/timeout @${tags.username} 3 Posting Links / First Message`
                     );
                 }
             })
